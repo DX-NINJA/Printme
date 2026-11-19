@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Print Me – Free Bulk Image &amp; PDF Printer for Windows</title>
+<meta name="description" content="Free Windows app to bulk print images and PDFs. Add a whole folder and print all your photos and PDF files at once, with live preview, multiple-per-page layouts, copies and more.">
+<meta name="theme-color" content="#070716">
+<meta property="og:title" content="Print Me – Free Bulk Image &amp; PDF Printer for Windows">
+<meta property="og:description" content="Bulk print whole folders of photos and PDFs in a few clicks. Free, offline, no ads.">
+<meta property="og:image" content="logo.png">
+<link rel="icon" href="logo.png">
+<script>document.documentElement.classList.add("js")</script>
+<style>
+@property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
+:root{color-scheme:dark;--bg:#070716;--txt:#e9e9ff;--muted:#9a9cc4;--cy:#22d3ee;--vi:#8b5cf6;--line:rgba(255,255,255,.1);--glass:rgba(255,255,255,.045)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px;position:relative}
+.blob{position:fixed;z-index:-1;border-radius:50%;filter:blur(110px);opacity:.35;pointer-events:none}
+.b1{width:480px;height:480px;background:var(--vi);top:-120px;left:-120px;animation:drift 18s ease-in-out infinite alternate}
+.b2{width:420px;height:420px;background:var(--cy);bottom:-120px;right:-100px;animation:drift 22s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(120px,80px) scale(1.2)}}
+.top{position:sticky;top:0;z-index:20;background:rgba(7,7,22,.7);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;height:64px;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;text-decoration:none}
+.brand img{width:36px;height:36px;filter:drop-shadow(0 0 10px rgba(34,211,238,.5))}
+.nav nav{margin-left:auto;display:flex;align-items:center;gap:22px}
+.nav nav a:not(.btn){text-decoration:none;font-size:15px;color:var(--muted);transition:color .2s}
+.nav nav a:not(.btn):hover{color:#fff}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px) scale(1.02)}
+.primary{color:#fff;background:linear-gradient(120deg,var(--vi),var(--cy),var(--vi));background-size:220% 100%;animation:shift 6s linear infinite;box-shadow:0 0 28px rgba(34,211,238,.4),0 0 60px rgba(139,92,246,.25)}
+.primary::after{content:"";position:absolute;top:0;left:-60%;width:35%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:sweep 3.6s ease-in-out infinite}
+@keyframes shift{to{background-position:220% 0}}
+@keyframes sweep{0%,60%{left:-60%}100%{left:140%}}
+.ghost{border:1.5px solid rgba(34,211,238,.45);color:#cffafe;background:rgba(34,211,238,.06)}
+.ghost:hover{box-shadow:0 0 24px rgba(34,211,238,.35)}
+.small{padding:9px 18px;font-size:14px}
+.arr{display:inline-block;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(4px)}}
+.hero{position:relative;text-align:center;padding:84px 0 0;overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.gridbg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(139,92,246,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.14) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse at 50% 25%,#000 20%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 25%,#000 20%,transparent 72%);animation:grid 12s linear infinite}
+@keyframes grid{to{background-position:0 48px,48px 0}}
+.chip{display:inline-block;font:600 12px ui-monospace,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cy);border:1px solid rgba(34,211,238,.4);background:rgba(34,211,238,.08);padding:6px 14px;border-radius:99px;margin-bottom:22px}
+.hero h1{font-size:clamp(34px,6vw,64px);line-height:1.1;margin:0 0 20px;letter-spacing:-.025em}
+.grad{background:linear-gradient(90deg,#c4b5fd,#22d3ee,#c4b5fd);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 7s linear infinite}
+.rot{display:block;min-height:1.2em;color:#fff}
+.caret{display:inline-block;width:3px;height:.9em;margin-left:4px;vertical-align:-.08em;background:var(--cy);box-shadow:0 0 12px var(--cy);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{max-width:650px;margin:0 auto 32px;font-size:19px;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.meta{margin:18px 0 0;font:13px ui-monospace,Consolas,monospace;color:var(--muted)}
+.meta a{color:#fff}
+.notice{max-width:700px;margin:30px auto 0;text-align:left;background:rgba(245,166,35,.09);color:#ffe9b0;border:1px solid rgba(245,166,35,.4);border-left:5px solid #f5a623;border-radius:12px;padding:16px 20px;font-size:15px;backdrop-filter:blur(6px)}
+.notice h3{margin:0 0 8px;font-size:17px;color:#ffd166}
+.notice ul{margin:0;padding-left:20px}
+.notice li{margin:5px 0}
+.notice a{color:#ffd166;font-weight:700}
+.float{margin:56px auto -90px;max-width:960px;animation:fl 6s ease-in-out infinite;position:relative;z-index:2}
+@keyframes fl{50%{transform:translateY(-12px)}}
+.shotwrap{padding:2px;border-radius:18px;background:conic-gradient(from var(--a),var(--vi),var(--cy),var(--vi));animation:spin 6s linear infinite;box-shadow:0 30px 90px rgba(139,92,246,.35),0 0 60px rgba(34,211,238,.2);transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .15s}
+@keyframes spin{to{--a:360deg}}
+.shot{display:block;width:100%;border-radius:16px}
+section{padding:76px 0;position:relative}
+.first{padding-top:150px}
+.tag{display:block;text-align:center;font:600 12px ui-monospace,Consolas,monospace;letter-spacing:.2em;color:var(--cy);margin-bottom:8px}
+h2{font-size:clamp(26px,4vw,40px);margin:0 0 10px;text-align:center;letter-spacing:-.015em}
+.sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 42px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:70px}
+.stat{text-align:center;padding:20px 10px;border:1px solid var(--line);background:var(--glass);border-radius:16px}
+.stat b{display:block;font-size:clamp(34px,5vw,48px);line-height:1.1;background:linear-gradient(135deg,#fff,var(--cy));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font:12px ui-monospace,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:18px}
+.card,.step{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:22px;overflow:hidden;transition:border-color .25s,transform .25s}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(34,211,238,.2),transparent 65%);opacity:0;transition:opacity .25s;pointer-events:none}
+.card:hover{border-color:rgba(34,211,238,.5);transform:translateY(-4px)}
+.card:hover::after{opacity:1}
+.card .ic{font-size:28px;filter:drop-shadow(0 0 10px rgba(139,92,246,.7))}
+.card h3{margin:8px 0 4px;font-size:18px}
+.card p,.step p{margin:0;color:var(--muted);font-size:15px}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--vi),var(--cy));color:#fff;font-weight:800;margin-bottom:12px;box-shadow:0 0 20px rgba(34,211,238,.5)}
+.step h3{margin:0 0 6px}
+.step a{color:var(--cy)}
+details{background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:0 auto 12px;max-width:760px;transition:border-color .2s}
+details[open]{border-color:rgba(139,92,246,.6)}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--cy);font-size:22px;line-height:1;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:10px 0 0;color:var(--muted)}
+details a{color:var(--cy)}
+.final{text-align:center}
+.final .wrap{padding:56px 20px;border:1px solid var(--line);border-radius:24px;background:radial-gradient(500px 200px at 50% 0,rgba(139,92,246,.3),transparent),var(--glass)}
+.final p.s{color:var(--muted);margin:0 0 26px}
+footer{border-top:1px solid var(--line);color:var(--muted);text-align:center;padding:28px 20px;font-size:14px}
+footer b{color:#fff}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+@media(max-width:640px){.nav nav a:not(.btn){display:none}.float{margin-bottom:-50px}.first{padding-top:100px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+
+<header class="top"><div class="wrap nav">
+  <a class="brand" href="#"><img src="logo.png" alt="Print Me logo">Print Me</a>
+  <nav>
+    <a href="#features">Features</a><a href="#install">Install</a><a href="#faq">FAQ</a>
+    <a class="btn primary small" data-dl="setup" href="#">Download</a>
+  </nav>
+</div></header>
+
+<div class="hero">
+  <div class="gridbg"></div><canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="chip">Free · Windows · Offline</span>
+    <h1><span class="grad">Bulk print images &amp; PDFs.</span><span class="rot"><span id="rot">whole folders, in a few clicks.</span><i class="caret"></i></span></h1>
+    <p class="lead">Print Me is a free Windows app for bulk printing. Add a whole folder of photos and PDFs, check the live preview, and print everything in one go.</p>
+    <div class="cta">
+      <a class="btn primary" data-dl="setup" href="#"><span class="arr">⬇</span> Download for Windows</a>
+      <a class="btn ghost" data-dl="portable" href="#">Portable .exe (no install)</a>
+    </div>
+    <p class="meta">Windows 10 &amp; 11 (64-bit) · No ads · No sign-up · v1.0</p>
+    <div class="notice" id="notice">
+      <h3>⚠️ Please read before you download</h3>
+      <ul>
+        <li>Print Me is a new, small independent app and is <b>not digitally signed</b> yet. Because of this, Windows SmartScreen or some antivirus programs may show a warning, or wrongly mark it as “suspicious” (a false alarm).</li>
+        <li>Print Me works fully offline on your PC and <b>never uploads your files</b>.</li>
+        <li>Download it only from this website. If you see a warning, click <b>More info → Run anyway</b>.</li>
+        <li>Want to double-check first? Upload the file to <a href="https://www.virustotal.com" target="_blank" rel="noopener">virustotal.com</a> and look at the results. If you’re not comfortable, please don’t install it.</li>
+      </ul>
+    </div>
+    <div class="float"><div class="shotwrap" id="tilt"><img class="shot" src="screenshot.png" alt="Print Me app window showing the file list, print settings and live preview"></div></div>
+  </div>
+</div>
+
+<section id="features" class="first"><div class="wrap">
+  <div class="stats">
+    <div class="stat"><b data-n="7">7</b><span>File formats</span></div>
+    <div class="stat"><b data-n="6">6</b><span>Page layouts</span></div>
+    <div class="stat"><b data-n="5">5</b><span>Paper sizes</span></div>
+    <div class="stat"><b data-n="0">0</b><span>Files uploaded</span></div>
+  </div>
+  <span class="tag rv">// FEATURES</span>
+  <h2 class="rv">Everything you need to print</h2>
+  <p class="sub rv">Add a folder, pick your settings, check the preview, print. That’s it.</p>
+  <div class="grid">
+    <div class="card"><div class="ic">🖨️</div><h3>True bulk printing</h3><p>Add a whole folder (even with subfolders) and print all images and PDFs together. JPG, PNG, BMP, GIF, TIFF, WEBP and PDF. Every PDF page prints too.</p></div>
+    <div class="card"><div class="ic">👀</div><h3>Live preview</h3><p>See exactly how each sheet will look before a single page comes out.</p></div>
+    <div class="card"><div class="ic">🧩</div><h3>Many per page</h3><p>1, 2, 4, 6, 8 or 9 images per sheet. Great for contact sheets and ID photos.</p></div>
+    <div class="card"><div class="ic">📋</div><h3>Copies per image</h3><p>Need 8 passport photos on one sheet? Set copies and print.</p></div>
+    <div class="card"><div class="ic">📄</div><h3>Paper &amp; fit control</h3><p>A4, A3, A5, Letter, Legal. Portrait or landscape. Fit, fill (crop) or original size.</p></div>
+    <div class="card"><div class="ic">✂️</div><h3>Captions, borders, cut lines</h3><p>Add file name or date captions, borders, and cut guides for trimming.</p></div>
+    <div class="card"><div class="ic">📑</div><h3>Save as PDF</h3><p>Turn any selection into a ready-to-share PDF instead of printing.</p></div>
+    <div class="card"><div class="ic">⚡</div><h3>Fast &amp; simple</h3><p>Thumbnails, drag &amp; drop, sorting, B&amp;W mode, a dark theme, and it remembers your settings.</p></div>
+  </div>
+</div></section>
+
+<section id="install"><div class="wrap">
+  <span class="tag rv">// INSTALL</span>
+  <h2 class="rv">Install in 3 steps</h2>
+  <p class="sub rv">No account, no sign-up, no internet needed after download.</p>
+  <div class="steps">
+    <div class="step"><h3>Download</h3><p>Click the download button and save <b>PrintMe_Setup.exe</b>.</p></div>
+    <div class="step"><h3>Run the installer</h3><p>Open it and follow the wizard. If Windows says “Windows protected your PC” (or your antivirus shows a warning), please read the <a href="#notice">note at the top</a>, then click <b>More info → Run anyway</b>.</p></div>
+    <div class="step"><h3>Start printing</h3><p>Open Print Me, add a folder, choose your printer and press <b>Print</b>.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <span class="tag rv">// FAQ</span>
+  <h2 class="rv">Questions</h2>
+  <p class="sub rv">Quick answers.</p>
+  <details class="rv"><summary>Is Print Me really free?</summary><p>Yes. It is free to download and use, with no ads and no sign-up.</p></details>
+  <details class="rv"><summary>Why does Windows say “Unknown publisher”?</summary><p>Print Me is a small independent app and is not digitally signed (signing certificates cost money). Windows shows this warning for most unsigned apps. Click <b>More info → Run anyway</b> to continue.</p></details>
+  <details class="rv"><summary>My antivirus says it’s suspicious. What should I do?</summary><p>New, unsigned apps are sometimes flagged by mistake (a “false positive”). You can check the file yourself on <a href="https://www.virustotal.com" target="_blank" rel="noopener">virustotal.com</a>, and install it only if you’re comfortable. Please don’t switch your antivirus off. If it blocks the file, you can allow just this one file.</p></details>
+  <details class="rv"><summary>Do my files get uploaded anywhere?</summary><p>No. Print Me works completely on your computer. Your images and PDFs are never uploaded. The only internet connection is an optional update check, which just asks GitHub for the latest version number. You can turn it off in Settings.</p></details>
+  <details class="rv"><summary>How do I update Print Me?</summary><p>Open <b>Settings → Updates → Check for updates now</b>. A green “Update available” button also appears in the app by itself when a new version is out. Or simply download the newest installer from this page and run it.</p></details>
+  <details class="rv"><summary>Which printers does it work with?</summary><p>Any printer installed in Windows. You can also use “Save as PDF” if you don’t have a printer connected.</p></details>
+  <details class="rv"><summary>Does it work on Mac or Linux?</summary><p>Not yet. Print Me is for Windows 10 and 11 (64-bit) only.</p></details>
+  <details class="rv"><summary>How do I uninstall it?</summary><p>Go to Windows <b>Settings → Apps</b>, find Print Me and click Uninstall. If you used the portable .exe, just delete the file.</p></details>
+</div></section>
+
+<section class="final"><div class="wrap rv">
+  <h2>Ready to print?</h2>
+  <p class="s">Download Print Me and get your first sheet out in under a minute.</p>
+  <div class="cta">
+    <a class="btn primary" data-dl="setup" href="#"><span class="arr">⬇</span> Download for Windows</a>
+    <a class="btn ghost" data-dl="portable" href="#">Portable .exe</a>
+  </div>
+  <p class="meta"><a href="#notice">Please read the note about Windows &amp; antivirus warnings first</a></p>
+</div></section>
+
+<footer>Made by <b>DM</b> · © <span id="yr"></span> Print Me</footer>
+
+<script>
+// ====== SIRF YE EK LINE BADALNI HAI ======
+// Apna GitHub username aur repository ka naam likhein (example: "dm123/printme")
+const REPO = "DX-NINJA/printme";
+// =========================================
+
+const base = "https://github.com/" + REPO + "/releases/latest/download/";
+const links = { setup: base + "PrintMe_Setup.exe", portable: base + "PrintMe.exe" };
+document.querySelectorAll("[data-dl]").forEach(function (a) {
+  a.href = links[a.dataset.dl];
+  a.addEventListener("click", function (e) {
+    if (REPO.indexOf("YOUR-USERNAME") === 0) {
+      e.preventDefault();
+      alert("Download link is not set yet.\nOpen index.html and replace YOUR-USERNAME/printme with your GitHub repository.");
+    }
+  });
+});
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+// ---------- animations (reduced-motion walon ke liye band) ----------
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// scroll reveal (grid ke cards ek ke baad ek)
+document.querySelectorAll(".grid,.steps,.stats").forEach(function (g) {
+  Array.prototype.forEach.call(g.children, function (c, i) { c.classList.add("rv"); c.style.setProperty("--d", i * 0.07 + "s"); });
+});
+function count(el) {
+  const n = +el.dataset.n, s = performance.now();
+  (function f(now) {
+    const k = Math.min(1, (now - s) / 1300);
+    el.textContent = Math.round(n * (1 - Math.pow(1 - k, 3)));
+    if (k < 1) requestAnimationFrame(f);
+  })(s);
+}
+if (reduce || !("IntersectionObserver" in window)) {
+  document.querySelectorAll(".rv").forEach(function (e) { e.classList.add("in"); });
+} else {
+  const io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("in");
+      const num = e.target.querySelector("[data-n]");
+      if (num) count(num);
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".rv").forEach(function (e) { io.observe(e); });
+  document.querySelectorAll("[data-n]").forEach(function (e) { e.textContent = "0"; });
+}
+
+// typing headline
+if (!reduce) {
+  const el = document.getElementById("rot");
+  const ph = ["whole folders, in a few clicks.", "photos and PDFs, in one go.", "ID photos, contact sheets, copies."];
+  let p = 0, i = ph[0].length, erasing = false;
+  (function tick() {
+    if (!erasing && i === ph[p].length) { erasing = true; return setTimeout(tick, 2200); }
+    if (erasing && i === 0) { erasing = false; p = (p + 1) % ph.length; }
+    i += erasing ? -1 : 1;
+    el.textContent = ph[p].slice(0, i);
+    setTimeout(tick, erasing ? 28 : 55);
+  })();
+}
+
+// card spotlight
+document.querySelectorAll(".card").forEach(function (c) {
+  c.addEventListener("pointermove", function (e) {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty("--mx", e.clientX - r.left + "px");
+    c.style.setProperty("--my", e.clientY - r.top + "px");
+  });
+});
+
+// screenshot 3D tilt (sirf mouse wale device par)
+const tilt = document.getElementById("tilt");
+if (!reduce && matchMedia("(hover:hover)").matches) {
+  tilt.addEventListener("pointermove", function (e) {
+    const r = tilt.getBoundingClientRect();
+    tilt.style.setProperty("--ry", ((e.clientX - r.left) / r.width - 0.5) * 9 + "deg");
+    tilt.style.setProperty("--rx", -((e.clientY - r.top) / r.height - 0.5) * 7 + "deg");
+  });
+  tilt.addEventListener("pointerleave", function () { tilt.style.setProperty("--rx", "0deg"); tilt.style.setProperty("--ry", "0deg"); });
+}
+
+// particle network (hero ke piche)
+(function () {
+  const c = document.getElementById("net");
+  if (reduce || !c.getContext) return;
+  const x = c.getContext("2d");
+  let w, h, pts = [], raf = 0, visible = true;
+  function size() {
+    const r = c.parentElement.getBoundingClientRect();
+    w = c.width = r.width; h = c.height = r.height;
+    pts = Array.from({ length: Math.min(70, Math.floor(w * h / 17000)) }, function () {
+      return { x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4 };
+    });
+  }
+  function draw() {
+    x.clearRect(0, 0, w, h);
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i];
+      a.x += a.vx; a.y += a.vy;
+      if (a.x < 0 || a.x > w) a.vx *= -1;
+      if (a.y < 0 || a.y > h) a.vy *= -1;
+      x.fillStyle = "rgba(120,225,255,.85)";
+      x.beginPath(); x.arc(a.x, a.y, 1.6, 0, 6.283); x.fill();
+      for (let j = i + 1; j < pts.length; j++) {
+        const b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < 125) {
+          x.strokeStyle = "rgba(139,92,246," + (1 - d / 125) * 0.55 + ")";
+          x.beginPath(); x.moveTo(a.x, a.y); x.lineTo(b.x, b.y); x.stroke();
+        }
+      }
+    }
+    raf = requestAnimationFrame(draw);
+  }
+  function run() { cancelAnimationFrame(raf); if (visible && !document.hidden) draw(); }
+  size(); run();
+  addEventListener("resize", function () { size(); });
+  document.addEventListener("visibilitychange", run);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; run(); }).observe(c);
+  }
+})();
+</script>
+</body>
+</html>
